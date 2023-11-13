@@ -2,10 +2,10 @@
 
 ## Run this integration in seconds using [Gitpod](https://gitpod.io/)
 
-* Open your [Adyen Test Account](https://ca-test.adyen.com/ca/ca/overview/default.shtml) and create a set of [API keys](https://docs.adyen.com/user-management/how-to-get-the-api-key).
-* Go to [gitpod account variables](https://gitpod.io/variables).
-* Set the `ADYEN_API_KEY`, `ADYEN_CLIENT_KEY`, `ADYEN_HMAC_KEY` and `ADYEN_MERCHANT_ACCOUNT variables`.
-* Click the button below!
+- Open your [Adyen Test Account](https://ca-test.adyen.com/ca/ca/overview/default.shtml) and create a set of [API keys](https://docs.adyen.com/user-management/how-to-get-the-api-key).
+- Go to [gitpod account variables](https://gitpod.io/variables).
+- Set the `ADYEN_API_KEY`, `ADYEN_CLIENT_KEY`, `ADYEN_HMAC_KEY` and `ADYEN_MERCHANT_ACCOUNT variables`.
+- Click the button below!
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/adyen-examples/adyen-rails-online-payments)
 
@@ -88,50 +88,56 @@ This sample application provides a simple webhook integration exposed at `/api/w
 Your endpoint that will consume the incoming webhook must be publicly accessible.
 
 There are typically 3 options:
-* deploy on your own cloud provider
-* deploy on Gitpod
-* expose your localhost with tunneling software (i.e. ngrok)
+
+- deploy on your own cloud provider
+- deploy on Gitpod
+- expose your localhost with tunneling software (i.e. ngrok)
 
 #### Option 1: cloud deployment
-If you deploy on your cloud provider (or your own public server) the webhook URL will be the URL of the server 
+
+If you deploy on your cloud provider (or your own public server) the webhook URL will be the URL of the server
+
 ```
   https://{cloud-provider}/api/webhooks/notifications
 ```
 
 #### Option 2: Gitpod
+
 If you use Gitpod the webhook URL will be the host assigned by Gitpod
+
 ```
   https://myorg-myrepo-y8ad7pso0w5.ws-eu75.gitpod.io/api/webhooks/notifications
 ```
+
 **Note:** when starting a new Gitpod workspace the host changes, make sure to **update the Webhook URL** in the Customer Area
 
 #### Option 3: localhost via tunneling software
+
 If you use a tunneling service like [ngrok](ngrok) the webhook URL will be the generated URL (ie `https://c991-80-113-16-28.ngrok.io`)
 
 ```bash
   $ ngrok http 8080
-  
-  Session Status                online                                                                                           
-  Account                       ############                                                                      
-  Version                       #########                                                                                          
-  Region                        United States (us)                                                                                 
-  Forwarding                    http://c991-80-113-16-28.ngrok.io -> http://localhost:8080                                       
-  Forwarding                    https://c991-80-113-16-28.ngrok.io -> http://localhost:8080           
+
+  Session Status                online
+  Account                       ############
+  Version                       #########
+  Region                        United States (us)
+  Forwarding                    http://c991-80-113-16-28.ngrok.io -> http://localhost:8080
+  Forwarding                    https://c991-80-113-16-28.ngrok.io -> http://localhost:8080
 ```
 
 **Note:** when restarting ngrok a new URL is generated, make sure to **update the Webhook URL** in the Customer Area
 
 ### Set up a webhook
 
-* In the Customer Area go to Developers -> Webhooks and create a new 'Standard notification' webhook.
-* Enter the URL of your application/endpoint (see options [above](#making-your-server-reachable))
-* Define username and password for Basic Authentication
-* Generate the HMAC Key
-* Optionally, in Additional Settings, add the data you want to receive. A good example is 'Payment Account Reference'.
-* Make sure the webhook is **Enabled** (therefore it can receive the notifications)
+- In the Customer Area go to Developers -> Webhooks and create a new 'Standard notification' webhook.
+- Enter the URL of your application/endpoint (see options [above](#making-your-server-reachable))
+- Define username and password for Basic Authentication
+- Generate the HMAC Key
+- Optionally, in Additional Settings, add the data you want to receive. A good example is 'Payment Account Reference'.
+- Make sure the webhook is **Enabled** (therefore it can receive the notifications)
 
 That's it! Every time you perform a new payment, your application will receive a notification from the Adyen platform.
-
 
 ## Contributing
 
